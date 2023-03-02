@@ -20,4 +20,17 @@ def about(request):
 def cats_index(request):
     # just like we passed data to our templates in express
     # we pass data to our templates through our view functions
-     return render(request, 'cats/index.html', { 'cats': cats })'cats': cats })
+    # we can gather relations from SQL using our model methods
+    cats = Cat.objects.all()
+    return render(request, 'cats/index.html', { 'cats': cats })
+    
+    # Detail routes for for cats
+    #cat_id is defined , ecpecting an integer, in our url
+    
+# main_app/views.py
+
+...
+
+def cats_detail(request, cat_id):
+  cat = Cat.objects.get(id=cat_id)
+  return render(request, 'cats/detail.html', { 'cat': cat })
