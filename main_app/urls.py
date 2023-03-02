@@ -1,14 +1,13 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
-    
-    # using  an empty tring here makes this our root route
-    # views . home renders refers to a file that  render views 
-    # the name  = 'home'
-    #
-    #
-    path( '', views.home, name ='home'),
-    path('about/', views.about, name='about')
+    # using an empty string here makes this our root route
+    # views.home refers to a view that renders a file
+    # the name='home' kwarg gives the route a name
+    # naming routes is optional, but best practices
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    # paths for cats
+    path('cats/', views.cats_index, name='index'),
 ]
